@@ -1,20 +1,36 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import ErrorBoundary from './src/components/ErrorBoundary';
+import { FontLoader } from './src/providers/FontLoader';
+import { AuthProvider } from './src/context/AuthContext';
+import { DataProvider } from './src/providers/DataProvider';
+import AppNavigator from './src/navigation/AppNavigator';
+import CustomSplashScreen from './src/components/common/CustomSplashScreen';
+import { Colors } from './src/styles/colors';
 
 export default function App() {
+  const [splashFinished, setSplashFinished] = useState(false);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ErrorBoundary>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <SafeAreaProvider>
+          {!splashFinished ? (
+            <CustomSplashScreen onFinish={() => setSplashFinished(true)} />
+          ) : (
+            <FontLoader>
+              <AuthProvider>
+                <DataProvider>
+                  <StatusBar style="dark" backgroundColor={Colors.background} />
+                  <AppNavigator />
+                </DataProvider>
+              </AuthProvider>
+            </FontLoader>
+          )}
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
+    </ErrorBoundary>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

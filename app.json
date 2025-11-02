@@ -1,29 +1,63 @@
 {
   "expo": {
-    "name": "LifeChangingJourneyApp",
-    "slug": "LifeChangingJourneyApp",
-    "version": "1.0.0",
+    "name": "Life Changing Journey",
+    "slug": "lifechangingjourney",
+    "version": "1.0.2",
+    "description": "A lifestyle companion app connecting users with local wellness professionals, business services, and community resources in Durban, South Africa.",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#faf5f0"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "co.za.lifechangingjourney.mobile",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSUserTrackingUsageDescription": "This app uses tracking to provide personalized wellness content.",
+        "NSCameraUsageDescription": "This app may use the camera for profile photos.",
+        "NSPhotoLibraryUsageDescription": "This app may access photos for profile pictures.",
+        "NSLocationWhenInUseUsageDescription": "This app may use location to show nearby services.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app may use location to show nearby services."
+      },
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#faf5f0"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": false,
+      "package": "co.za.lifechangingjourney.mobile",
+      "versionCode": 5,
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE"
+      ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "updates": {
+      "enabled": false
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-video",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "76ddea51-9f88-4606-b83a-0803b8a0e3a3"
+      }
+    },
+    "owner": "nkazi01"
   }
 }

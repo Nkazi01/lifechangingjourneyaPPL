@@ -3,16 +3,52 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "start": "expo start --offline",
+    "start:online": "expo start",
+    "start:tunnel": "expo start --tunnel",
+    "start:lan": "expo start --lan",
+    "start:offline": "expo start --offline",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "clean": "powershell -ExecutionPolicy Bypass -File ./scripts/cleanup.ps1 -Hard",
+    "clean:offline": "powershell -ExecutionPolicy Bypass -File ./scripts/cleanup.ps1 -Hard -Offline",
+    "build:android": "eas build --platform android --profile production",
+    "build:ios": "eas build --platform ios --profile ios-production",
+    "build:huawei": "eas build --platform android --profile huawei",
+    "submit:android": "eas submit --platform android --profile production",
+    "submit:ios": "eas submit --platform ios --profile production"
   },
   "dependencies": {
-    "expo": "~54.0.20",
-    "expo-status-bar": "~3.0.8",
-    "react": "19.1.0",
-    "react-native": "0.81.5"
+    "@expo-google-fonts/poppins": "^0.4.0",
+    "@expo/vector-icons": "^14.0.2",
+    "@react-native-async-storage/async-storage": "^2.1.2",
+    "@react-native-community/netinfo": "^11.4.1",
+    "@react-native-masked-view/masked-view": "^0.3.2",
+    "@react-navigation/bottom-tabs": "^7.4.7",
+    "@react-navigation/native": "^7.1.17",
+    "@react-navigation/stack": "^7.4.8",
+    "@supabase/supabase-js": "^2.57.4",
+    "expo": "~53.0.23",
+    "expo-asset": "~11.1.7",
+    "expo-av": "^15.1.7",
+    "expo-font": "~13.3.2",
+    "expo-linear-gradient": "^14.1.5",
+    "expo-splash-screen": "^0.30.10",
+    "expo-status-bar": "~2.2.3",
+    "expo-video": "~2.2.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "^0.79.5",
+    "react-native-gesture-handler": "~2.24.0",
+    "react-native-reanimated": "~3.17.4",
+    "react-native-safe-area-context": "^5.4.0",
+    "react-native-screens": "~4.11.1",
+    "react-native-web": "^0.20.0",
+    "react-native-webview": "^13.13.5"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eas-cli": "^0.1.0"
+  }
 }
